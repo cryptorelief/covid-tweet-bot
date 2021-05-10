@@ -1,0 +1,7 @@
+{
+    "reply": "Hello, visit https://covidcitizens.org for more",
+
+    "monitorTracks": ["@IntrobotAI", "#IntrobotAI"],
+
+    "throttleMs": 0
+}
