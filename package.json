@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "eslint": "^7.26.0",
     "node-fetch": "^2.6.1",
     "twit": "^2.2.11"
   },
