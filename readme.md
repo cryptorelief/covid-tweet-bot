@@ -4,7 +4,7 @@ A twitter bot to monitor and repy to help with the COVID-19 pandemic in India.
 
 ## setup
 
-setup an `.env` file and source it (or just set environment variables directly with)
+make an `.env` file and source it (`source .env`)
 
 ```bash
 export bot_user_id="<id>"
