@@ -9,6 +9,8 @@ const processTweet = async (tweet) => {
   const tweetText = tweet?.text;
   const tweetUserId = tweet?.user?.id_str;
 
+  console.log("got tweet", tweetUserId);
+
   if (tweetUserId === botUserId) {
     // don't process tweets from the bot itself
     return;
@@ -17,7 +19,6 @@ const processTweet = async (tweet) => {
   try {
     const raw = fs.readFileSync("./runConfig.json").toString();
     const runConfig = JSON.parse(raw);
-
     const dateDiff = new Date(runConfig?.startTime) - new Date();
     if (runConfig?.enabled === false || dateDiff > 0) {
       return;
@@ -31,7 +32,7 @@ const processTweet = async (tweet) => {
     // ...
 
     // implement maybe a throttled queue here if we get too many tweets
-    await replyToTweet(tweetId, startConfig.reply);
+    await Twitter.replyToTweet(tweetId, startConfig.reply);
   }
 };
 

@@ -1,4 +1,3 @@
-const fs = require("fs");
 const Twit = require("twit");
 
 const creds = {
