@@ -19,9 +19,10 @@ const processTweet = async (tweet) => {
 
   try {
     const runConfig = ConfigServer.getRunConfig();
-    const dateDiff = new Date(runConfig?.startTime) - new Date();
+    const startDateDiff = new Date(runConfig?.startTime) - new Date();
+    const endDateDiff = new Date(runConfig?.endTime) - new Date();
 
-    if (runConfig?.enabled === false || dateDiff > 0) {
+    if (runConfig?.enabled === false || startDateDiff > 0 || endDateDiff < 0) {
       return;
     }
   } catch (error) {
@@ -37,13 +38,22 @@ const processTweet = async (tweet) => {
   }
 };
 
-Twitter.listenToStream(startConfig.monitorTracks, (tweet) => {
-  try {
-    processTweet(tweet);
-  } catch (error) {
-    // ideally must send an alert to the maintainers
-    console.error(error);
-  }
-});
-
 ConfigServer.runConfigServer();
+
+function start() {
+  try {
+    Twitter.listenToStream(startConfig.monitorTracks, (tweet) => {
+      try {
+        processTweet(tweet);
+      } catch (error) {
+        // ideally must send an alert to the maintainers
+        console.error(error);
+      }
+    });
+  } catch (error) {
+    console.error(error);
+    start();
+  }
+}
+
+start();

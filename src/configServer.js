@@ -9,7 +9,8 @@ const expressApp = express();
 
 let runConfig = {
   enabled: true,
-  startTime: new Date().toString(),
+  startTime: new Date().toISOString(),
+  endTime: new Date().toISOString(),
 };
 
 if (fs.existsSync(CONFIG_FILE_PATH)) {
@@ -30,10 +31,15 @@ if (fs.existsSync(CONFIG_FILE_PATH)) {
 
 expressApp
   .route("/config")
-  .get((req, res) => {
+  .get((_, res) => {
     res.json(runConfig);
   })
   .put((req, res) => {
+    console.log("request to edit", {
+      url: req.url,
+      auth: req.headers.authorization,
+    });
+
     if (req.query?.enabled) {
       const enabled = req.query?.enabled === "true";
       runConfig = {
@@ -47,6 +53,14 @@ expressApp
       runConfig = {
         ...runConfig,
         startTime,
+      };
+    }
+
+    if (req.query?.endTime) {
+      const endTime = new Date(req.query?.endTime);
+      runConfig = {
+        ...runConfig,
+        endTime,
       };
     }
 

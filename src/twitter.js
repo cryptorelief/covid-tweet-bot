@@ -45,6 +45,10 @@ const listenToStream = (track, cb) => {
   });
 
   twitterStream.on("tweet", cb);
+
+  twitterStream.on("error", () => console.error("error event"));
+
+  return twitterStream;
 };
 
 module.exports = {

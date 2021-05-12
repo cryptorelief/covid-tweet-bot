@@ -1,5 +1,5 @@
 {
-    "reply": "Hello, visit https://covidcitizens.org for more",
+    "reply": "You may find instant information about Covid related medical resources (ambulances, oxygen cylinders, ICU, hospital beds etc) at our Covid Whatsapp bot here. Just click on the link below to start chat or text COVID to +12345178991 on Whatsapp: http://bit.ly/CovidWhatsappBot \ncc: @IntrobotAI @CovidCitizens",
 
     "monitorTracks": ["@IntrobotAI", "#IntrobotAI"],
 
