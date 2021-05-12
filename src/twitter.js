@@ -16,6 +16,8 @@ const twitterInstance = new Twit(creds);
  * @param {string} replyText
  */
 const replyToTweet = async (parentTweetId, replyText) => {
+  console.log("replying to tweetId", parentTweetId, "with", replyText);
+
   twitterInstance.post("statuses/update", {
     status: replyText,
     in_reply_to_status_id: parentTweetId,

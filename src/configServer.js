@@ -9,7 +9,7 @@ const expressApp = express();
 
 let runConfig = {
   enabled: true,
-  startTime: new Date(),
+  startTime: new Date().toString(),
 };
 
 if (fs.existsSync(CONFIG_FILE_PATH)) {
