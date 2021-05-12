@@ -3,5 +3,7 @@
 
     "monitorTracks": ["@IntrobotAI", "#IntrobotAI"],
 
-    "throttleMs": 0
+    "throttleMs": 0,
+
+    "port": 3001
 }
