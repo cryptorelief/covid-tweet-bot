@@ -59,5 +59,9 @@ expressApp
 
 module.exports = {
   getRunConfig: () => runConfig,
-  runConfigServer: () => expressApp.listen(startConfig.port),
+  runConfigServer: () => {
+    console.log("config server listening to port", startConfig.port);
+
+    expressApp.listen(startConfig.port);
+  },
 };
